@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int main()
+{
+
+// Deklaration der Variablen
+    int Nummer[10], zahluser, k, temp;
+
+        // zahluser     = wie viele Zahlen User eingibt
+        // k            = wie viele Durchgänge (pro Durchgang Zahluser - k Vergleiche)
+        // Nummer[10]   = Array mit 10 Zahlen (0-9)
+        // swap         = temporärer Speicherplatz
+
+
+// INPUT ZAHLEN DIE MAN SORTIEREN SOLL
+
+    printf("Wie viele Zahlen werden Sie eingeben? ");
+    scanf("%d", &zahluser);
+
+    printf("\nGeben Sie die Zahlen eine nach der anderen ein. \n");
+
+    for (k = 0; k < zahluser; k++)
+        scanf("%d", &Nummer[k]); // lesen Zahlen User eingibt, speichern in array
+
+
+// SORTIEREN DER ZAHLEN AUFSTEIGENDER REIHENFOLGE
+
+    for (k = 0 ; k < ( zahluser - 1 ); k++) // wenn k < als zahluser - 1 geht es weiter
+                                            // 1. Durchgang zahluser - 1 Vergleiche, k. D. zahluser - k Vergleiche, letzter Durchgang 1 Vergleich
+    {
+        for (k = 0 ; k < zahluser - k - 1; k++)
+        {
+            if (Nummer[k] > Nummer[k+1]) // pro Durchgang aneinander stehende Zahlen vergleichen, nicht in Reihenfolge --> diese verändern. Hier: wenn Z1 > als Z2
+            {
+                temp       = Nummer[k]; // wenn Z2 > als Z1, Z2 in swap speichern
+                Nummer[k]   = Nummer[k+1]; //
+                Nummer[k+1] = temp;
+            }
+        }
+    }
+
+
+
+// AUSGABE SORTIERTE ZAHLEN
+
+    printf("\nDie Zahlen in aufsteigender Reihenfolge:\n");
+    
+    for ( k = 0 ; k < zahluser ; k++ )
+        printf("%d\n", Nummer[k]);
+
+    printf("\nDie Zahlen in absteigender Reihenfolge:\n");
+
+    for ( k = 0 ; k < zahluser ; k++ )
+        printf("%d\n", Nummer[k]);
+    
+    return 0;
+}
